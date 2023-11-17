@@ -2,13 +2,14 @@
   "$schema": "https://www.raycast.com/schemas/extension.json",
   "name": "deepcast",
   "title": "Deepcast",
-  "description": "Translate words, or entire sentences, into 27 different languages using DeepL.",
+  "description": "Translate words, or entire sentences, into 27 different languages using DeepLX.",
   "icon": "icon.png",
   "keywords": [
     "deepl",
+    "deeplx",
     "translate"
   ],
-  "author": "mooxl",
+  "author": "moeyua",
   "contributors": [
     "peter-gy",
     "popalay",

@@ -1,14 +1,16 @@
 # DeepcastX
 
-based on [Deepcast](https://www.raycast.com/mooxl/deepcast) with DeepLX API URL support
+Based on [Deepcast](https://www.raycast.com/mooxl/deepcast) with DeepLX API URL support
 
 Translate words, or entire sentences, into 27 different languages using DeepL.
 
-## How to get the DeepLX API URL
-https://github.com/OwO-Network/DeepLX
+## How to use
 
-## How to get the API Token
+>This extension is not published to Raycast Store yet. You can install it locally.
 
-1. Register for free at DeepL https://www.deepl.com/pro#developer.
-2. Go to https://www.deepl.com/pro-account/summary.
-3. Scroll down and get your API Token
+1. Clone this repo to your local machine
+2. `cd` to the repo and run `pnpm install` or `npm install`
+3. Install [Raycast](https://www.raycast.com/)
+4. Install Developer extension in Raycast Store
+5. Import local extension in Developer extension
+6. Done

@@ -168,8 +168,8 @@ export const target_languages = {
   NL: "Dutch",
   EN: "English",
   // BUG: DeeplX does not support EN-GB and EN-US
-  // "EN-GB": "English (UK)",
-  // "EN-US": "English (US)",
+  "EN-GB": "English (UK)",
+  "EN-US": "English (US)",
   ET: "Estonian",
   FI: "Finnish",
   FR: "French",

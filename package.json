@@ -503,14 +503,6 @@
       "type": "textfield"
     },
     {
-      "description": "Your DeepL API key",
-      "name": "key",
-      "placeholder": "Enter your DeepL API key",
-      "required": false,
-      "title": "API key",
-      "type": "password"
-    },
-    {
       "name": "defaultTargetLanguage",
       "type": "dropdown",
       "title": "Default Target Language",

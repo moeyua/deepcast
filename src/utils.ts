@@ -77,6 +77,7 @@ export async function sendTranslateRequest({
     const text = initialText || (await readContent(source));
 
     const toast = await showToast(Toast.Style.Animated, "Fetching translation...");
+    if (targetLanguage.startsWith("EN")) targetLanguage = "EN";
     try {
       const { data: translation, alternatives } = await ofetch<{
         alternatives: string[];
@@ -86,7 +87,7 @@ export async function sendTranslateRequest({
       }>(url, {
         method: "POST",
         body: { text: text,
-          source_lang: sourceLanguage,
+          source_lang: sourceLanguage ?? "",
           target_lang: targetLanguage, },
       });
       const detectedSourceLanguage = sourceLanguage;
@@ -165,8 +166,10 @@ export const target_languages = {
   CS: "Czech",
   DA: "Danish",
   NL: "Dutch",
-  "EN-GB": "English (UK)",
-  "EN-US": "English (US)",
+  EN: "English",
+  // BUG: DeeplX does not support EN-GB and EN-US
+  // "EN-GB": "English (UK)",
+  // "EN-US": "English (US)",
   ET: "Estonian",
   FI: "Finnish",
   FR: "French",

@@ -15,7 +15,8 @@
     "MonsterDeveloper",
     "Yamen",
     "EvanZhouDev",
-    "erics118"
+    "erics118",
+    "moeyua"
   ],
   "license": "MIT",
   "commands": [
@@ -494,10 +495,18 @@
   ],
   "preferences": [
     {
+      "description": "Your DeepLX API URL",
+      "name": "url",
+      "placeholder": "Enter your DeepLX API URL",
+      "required": true,
+      "title": "API URL",
+      "type": "textfield"
+    },
+    {
       "description": "Your DeepL API key",
       "name": "key",
       "placeholder": "Enter your DeepL API key",
-      "required": true,
+      "required": false,
       "title": "API key",
       "type": "password"
     },
@@ -679,7 +688,8 @@
     "@raycast/api": "^1.60.1",
     "@types/got": "^9.6.12",
     "got": "^11.8.2",
-    "http-status-codes": "^2.3.0"
+    "http-status-codes": "^2.3.0",
+    "ofetch": "^1.3.3"
   },
   "devDependencies": {
     "@raycast/eslint-config": "^1.0.8",

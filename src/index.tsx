@@ -33,6 +33,7 @@ const Command = (props: LaunchProps) => {
   const [loading, setLoading] = useState(false);
   const [sourceText, setSourceText] = useState("");
   const [translation, setTranslation] = useState("");
+  const [alternatives, setAlternatives] = useState<string[]>([]);
   const [sourceLanguage, setSourceLanguage] = useState<SourceLanguage | "">("");
   const [targetLanguage, setTargetLanguage] = useState<TargetLanguage>(defaultTargetLanguage);
   const [detectedSourceLanguage, setDetectedSourceLanguage] = useState<SourceLanguage>();
@@ -52,8 +53,9 @@ const Command = (props: LaunchProps) => {
 
     if (!response) return;
 
-    const { translation, detectedSourceLanguage } = response;
+    const { translation, detectedSourceLanguage, alternatives } = response;
     setTranslation(translation);
+    setAlternatives(alternatives);
     setDetectedSourceLanguage(detectedSourceLanguage);
   };
 
@@ -131,6 +133,14 @@ const Command = (props: LaunchProps) => {
         ))}
       </Form.Dropdown>
       <Form.TextArea id="translation" value={translation} />
+
+      <Form.TextArea
+        id="alternatives"
+        value={alternatives.join("\n")}
+        title="Alternatives"
+        placeholder="No alternatives found"
+      />
+
     </Form>
   );
 };

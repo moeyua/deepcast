@@ -9,11 +9,12 @@ import {
   closeMainWindow,
 } from "@raycast/api";
 import got from "got";
+import { ofetch } from "ofetch";
 import { StatusCodes, getReasonPhrase } from "http-status-codes";
 
-function isPro(key: string) {
-  return !key.endsWith(":fx");
-}
+// function isPro(key: string) {
+//   return !key.endsWith(":fx");
+// }
 
 const DEEPL_QUOTA_EXCEEDED = 456;
 
@@ -70,27 +71,25 @@ export async function sendTranslateRequest({
 }) {
   try {
     const prefs = getPreferenceValues<Preferences>();
-    const { key, source } = prefs;
+    const { source, url } = prefs;
     onTranslateAction = onTranslateAction ?? prefs.onTranslateAction;
 
     const text = initialText || (await readContent(source));
 
     const toast = await showToast(Toast.Style.Animated, "Fetching translation...");
     try {
-      const {
-        translations: [{ text: translation, detected_source_language: detectedSourceLanguage }],
-      } = await got
-        .post(`https://api${isPro(key) ? "" : "-free"}.deepl.com/v2/translate`, {
-          headers: {
-            Authorization: `DeepL-Auth-Key ${key}`,
-          },
-          json: {
-            text: [text],
-            source_lang: sourceLanguage,
-            target_lang: targetLanguage,
-          },
-        })
-        .json<{ translations: { text: string; detected_source_language: SourceLanguage }[] }>();
+      const { data: translation, alternatives } = await ofetch<{
+        alternatives: string[];
+        data: string;
+        code: number;
+        id: number;
+      }>(url, {
+        method: "POST",
+        body: { text: text,
+          source_lang: sourceLanguage,
+          target_lang: targetLanguage, },
+      });
+      const detectedSourceLanguage = sourceLanguage;
       switch (onTranslateAction) {
         case "clipboard":
           await Clipboard.copy(translation);
@@ -114,7 +113,7 @@ export async function sendTranslateRequest({
           toast.hide();
           break;
       }
-      return { translation, detectedSourceLanguage };
+      return { translation, detectedSourceLanguage, alternatives };
     } catch (error) {
       await showToast(Toast.Style.Failure, "Something went wrong", gotErrorToString(error));
     }

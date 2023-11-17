@@ -6,13 +6,13 @@ settings:
 
 dependencies:
   '@raycast/api':
-    specifier: ^1.60.1
+    specifier: ^1.62.0
     version: 1.62.0(@types/node@18.18.4)(@types/react@18.2.33)
   '@types/got':
     specifier: ^9.6.12
     version: 9.6.12
   got:
-    specifier: ^11.8.2
+    specifier: ^11.8.6
     version: 11.8.6
   http-status-codes:
     specifier: ^2.3.0
@@ -32,10 +32,10 @@ devDependencies:
     specifier: 18.2.33
     version: 18.2.33
   eslint:
-    specifier: ^8.52.0
+    specifier: ^8.53.0
     version: 8.53.0
   prettier:
-    specifier: ^3.0.3
+    specifier: ^3.1.0
     version: 3.1.0
   typescript:
     specifier: ^5.2.2
